@@ -1,0 +1,168 @@
+@import '../common.scss';
+
+.GifMakerPage .EditorPanel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 384px;
+    background: #202124;
+
+    @media (max-width: $small-max-width) {
+        width: 100%;
+        height: auto;
+        justify-content: flex-end;
+    }
+
+    h1, button {
+        user-select: none;
+    }
+
+    h2, p, label, textarea, input {
+        color: white;
+    }
+
+    textarea, input {
+        background: #3C4043;
+        border: 1px solid #5F6368;
+        @include font-family-text-regular();
+        color: #F8F9FA;
+
+        &:hover {
+            border-color: #669DF6;
+        }
+    }
+
+    .tool-selector-buttons {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid black;
+
+        @media (max-width: $small-max-width) {
+            border-top: 2px solid black;
+            border-bottom: none;
+        }
+
+        .selector {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            height: 64px;
+
+            @media(max-width: $small-max-width) {
+                height: 52px;
+            }
+
+            &:hover {
+                &:enabled {
+                    background-color: #3C4043;
+                }
+                &:disabled {
+                    cursor: default;
+                }
+            }
+
+
+            span[class*='iconfont-'] {
+                width: 20px;
+                height: 20px;
+                color: #5F6368;
+            }
+            .selection-indicator {
+                display: none;
+                position: absolute;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                height: 4px;
+                width: 30px;
+                bottom: 0;
+                left: 50%;
+                background: #669DF6;
+                transform: translate(-50%);
+            }
+
+            &.selected {
+                span[class*='iconfont-'] {
+                    color: #F8F9FA;
+                }
+                .selection-indicator {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .editor-box {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+
+        @media (max-width: $small-max-width) {
+            height: 100px;
+        }
+
+        .tools-section {
+            padding: 32px;
+            user-select: none;
+            color: white;
+
+            @media (max-width: $small-max-width) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100px;
+                border: unset;
+                padding: 0 16px;
+
+                &.ios-swipe-padding-fix {
+                    padding: 0 26px;
+                }
+            }
+
+
+            .section-header {
+                h2 {
+                    margin-bottom: 8px;
+                    @include font-family-medium;
+                    font-size: 18px;
+                    line-height: 27px;
+                    color: #F8F9FA;
+                }
+                p {
+                    margin-bottom: 16px;
+                    @include font-family-text-light;
+                    font-size: 18px;
+                    line-height: 24px;
+                    color: #F8F9FA;
+                }
+            }
+        }
+        .create-button-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 0 32px;
+            border-top: 1px #5F6368 solid;
+            margin: 0 32px;
+        }
+    }
+    .tool-settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .tools-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+}

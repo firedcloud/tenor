@@ -1,0 +1,87 @@
+@import "scss/_vars.scss";
+
+.StaticImageInfoIcon {
+    position: relative;
+    line-height: 1;
+    z-index: 100;
+
+    &:hover .Tooltip {
+        display: inline-block;
+        opacity: 1;
+        position: absolute;
+
+        span.content {
+            height: auto;
+            padding: 16px;
+            width: 250px;
+            white-space: normal;
+
+            h2 {
+                @include font-family-text-semibold;
+                color: $blue;
+                font-size: 14px;
+                margin-bottom: 4px;
+            }
+
+            p {
+                @include font-family-text-regular;
+                font-size: 14px;
+                line-height: 19px;
+                margin: 0;
+            }
+        }
+    }
+
+    &.item-view {
+        span[class*='iconfont-'] {
+            color: #2b2b2b;
+            font-size: 28px;
+        }
+        &:hover {
+            span[class*='iconfont-'] {
+                color: $blue;
+            }
+        }
+        .Tooltip {
+            left: unset;
+            right: 0;
+            bottom: calc(28px + 6px);
+
+            span.content {
+                left: unset;
+            }
+        }
+    }
+    &.giflist {
+        img {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+        }
+        .Tooltip {
+            bottom: calc(32px + 6px);
+        }
+    }
+}
+
+.StaticImageInfoWrapper {
+    .TooltipV2 {
+        span.content {
+            width: 360px;
+
+            span.static-beta-tooltip-content {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+
+                img {
+                    margin-right: 16px;
+                }
+
+                .content-right {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "async": "^3.2.4",
+    "inferno-router": "^8.0.1",
+    "webpack": "^5.73.0"
+  }
+}

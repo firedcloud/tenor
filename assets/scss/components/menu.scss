@@ -1,0 +1,76 @@
+@keyframes menuFadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+}
+@keyframes menuFadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.menu{
+	display: none; // only applies on first load, afterwards parent has .clicked
+	animation-name: menuFadeOutUp;
+	animation-duration: 0.15s;
+	background-color: white;
+	width: 400px;
+	border-radius: 3px;
+	background-color: white;
+	box-shadow: 0 0 1px 0 $button-shadow-color-2, 0 8px 16px 0 $button-shadow-color-3;
+	border: solid 1px $light-grey-5;
+	position: absolute;
+	top: 44px; // 12px + height of icon
+	right: -7px;
+
+	.item{
+		border-bottom: 1px solid $light-grey-5;
+		&:last-child{
+			border-bottom: none;
+		}
+	}
+	h2.item, h3.item, a.item{
+		display: block;
+		text-align: left;
+		color: $off-black;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	h2.item, h3.item{
+		@include font-family-demi();
+		margin-bottom: 0;
+		height: 42px;
+		line-height: 42px;
+	}
+	h3.item{
+		font-size: 10px;
+		color: $medium-grey-3;
+		height: 32px;
+		line-height: 32px;
+		background-color: $off-white-4;
+		text-transform: uppercase;
+	}
+	a.item{
+		&:hover, &:focus{
+			text-decoration: none;
+			background-color: $off-white-4;
+		}
+	}
+}
+.clicked .menu{
+	display: block;
+}
+.active .menu{
+	animation-name: menuFadeInDown;
+    z-index: 1000;
+}

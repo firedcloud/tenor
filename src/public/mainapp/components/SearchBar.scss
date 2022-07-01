@@ -1,0 +1,64 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+.SearchBar{
+	position: relative;
+	display: block;
+	width: 100%;
+	background-color: white;
+	border-radius: 3px;
+	color: #171717;
+	font-size: 16px;
+	text-align: left;
+	input{
+		width: 100%;
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 1px 0 rgba(0, 0, 0, 0.08);
+		border-radius: 3px;
+		padding: 12px 20px;
+		color: #171717;
+		@include font-family-bold();
+
+		@include placeholder(){
+			@include font-family-bold();
+			color: #171717;
+			opacity: 0.3;
+		}
+		&:hover{
+			transition: all .15s ease-in;
+			box-shadow: 0 3px 8px 0 rgba(0,0,0,0.16), 0 0 1px 0 rgba(0,0,0,0.08);
+		}
+	}
+	.iconfont-search{
+		position: absolute;
+		right: 0;
+		padding: 17px;
+		cursor: pointer;
+	}
+	.suggestions{
+		@include font-family-bold();
+		position: absolute;
+		width: 100%;
+		z-index: 105;
+		background-color: white;
+		box-shadow: 0 3px 8px 0 rgba(0,0,0,0.16), 0 0 1px 0 rgba(0,0,0,0.08);
+		&>a{
+			display: flex;
+			align-items: center;
+			padding: 10px 20px;
+			text-decoration: none;
+			color: #171717;
+			&:hover, &.selected{
+				background-color: #eee;
+				transition: all .15s ease-in;
+			}
+			img.partner-logo {
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+				margin-right: 7px;
+				border-radius: 12px;
+				vertical-align: bottom;
+			}
+		}
+	}
+}

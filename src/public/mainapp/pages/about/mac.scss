@@ -1,0 +1,12 @@
+@import "scss/_vars.scss";
+
+.mac-body {
+    @include font-family-text-semibold();
+
+	*, ::after, ::before {
+	    box-sizing: inherit;
+	}
+	.container {
+		padding: 0;
+	}
+}

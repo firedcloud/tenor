@@ -1,0 +1,38 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+.GifMakerPage .CreateGifButton {
+    @extend .button;
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    height: 42px;
+    line-height: 42px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+    &:disabled {
+        cursor: default;
+    }
+
+    .button-content {
+        display: flex;
+        align-items: center;
+        line-height: 18px;
+
+        img, div {
+            margin-right: 6px;
+        }
+    }
+
+    @media(max-width: $small-max-width) {
+        display: flex;
+        color: #669DF6;
+        border: none;
+        text-transform: none;
+        font-size: 16px;
+        padding: 0 12px;
+        width: unset !important;
+    }
+}

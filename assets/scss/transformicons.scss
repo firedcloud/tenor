@@ -1,0 +1,102 @@
+// Change to watch in slow motion
+$duration: .5s;
+
+$toggled-size : .75;
+
+$bg : #274380;
+$content-bg : #000;
+
+.navicon-button {
+  display: inline-block;
+  position: relative;
+  padding: 2.0625em 1.5em;
+  transition: $duration/2;
+  cursor: pointer;
+  user-select: none;
+  opacity: .8;
+
+  .navicon:before, .navicon:after {
+    transition: $duration/2;
+  }
+
+  &:hover {
+    transition: $duration;
+
+    .navicon:before, .navicon:after {
+      transition: $duration/2;
+    }
+
+    .navicon:before { top: .825em; }
+    .navicon:after { top: -.825em; }
+  }
+}
+
+.navicon {
+  position: relative;
+  width: 2.5em;
+  height: .3125em;
+  background: $content-bg;
+  transition: $duration;
+  border-radius: 2.5em;
+
+  &:before, &:after {
+    display: block;
+    content: "";
+    height: .3125em;
+    width: 2.5em;
+    background: $content-bg;
+    position: absolute;
+    z-index: -1;
+    transition: $duration $duration/2;
+    border-radius: 1em;
+  }
+
+  &:before { top: .625em; }
+  &:after { top: -.625em; }
+}
+
+.navicon-button.active:not(.steps) .navicon:before,
+.navicon-button.active:not(.steps) .navicon:after {
+  top: 0 !important;
+}
+
+.navicon-button.active .navicon:before,
+.navicon-button.active .navicon:after {
+  transition: $duration;
+}
+
+/* Minus */
+.navicon-button.active { transform: scale($toggled-size); }
+
+/* Arrows */
+.navicon-button.active.larr .navicon,
+.navicon-button.active.rarr .navicon,
+.navicon-button.active.uarr .navicon {
+    &:before, &:after {
+      width: 1.5em;
+    }
+
+    &:before { transform: rotate(35deg); transform-origin: left top; }
+    &:after { transform: rotate(-35deg); transform-origin: left bottom; }
+}
+.navicon-button.active.uarr { transform: scale($toggled-size) rotate(90deg); }
+
+/* Arrows */
+.navicon-button.active.rarr .navicon {
+    &:before { transform: translate3d(1em,0,0) rotate(-35deg); transform-origin: right top; }
+    &:after { transform: translate3d(1em,0,0) rotate(35deg); transform-origin: right bottom; }
+}
+
+/* × and + */
+.navicon-button.active.plus,
+.navicon-button.active.x {
+  .navicon {
+    background: transparent;
+
+    &:before { transform: rotate(-45deg); }
+    &:after { transform: rotate(45deg); }
+  }
+}
+.navicon-button.active.plus {
+  transform: scale($toggled-size) rotate(45deg)
+}

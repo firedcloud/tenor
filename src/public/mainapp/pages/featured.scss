@@ -1,0 +1,147 @@
+@import "scss/_vars.scss";
+
+.carousel-container{
+	margin-top: 0;
+	@media (max-width: $small-max-width) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+.carousel {
+	width: 100%;
+	height: 250px;
+	background: $blue;
+	color: white;
+	font-size: 13px;
+	@include  font-family-medium();
+	position: relative;
+	overflow: hidden;
+	-webkit-backface-visibility: hidden;
+
+	img {
+		visibility: visible;
+	}
+
+	.slide {
+		position: absolute;
+		background-color: inherit;
+		height: 100%;
+		width: 100%;
+		padding-left: 40px;
+		padding-right: 40px;
+		padding-top: 20px;
+		padding-bottom: 10px;
+		overflow: hidden;
+		// possibly reduce flickering
+		-webkit-backface-visibility: hidden;
+		-webkit-transform: translate3d(0, 0, 0);
+		*{
+			-webkit-transform: translate3d(0, 0, 0);
+		}
+
+		.info{
+			img{
+				max-width: 100%;
+			}
+		}
+	}
+
+	.arrow {
+		width: 8px;
+		height: 14px;
+		position: absolute;
+		top: calc(50% - 7px);
+		cursor: pointer;
+		z-index: 9999;
+	}
+
+	.left-arrow {
+		left: 20px;
+	}
+
+	.right-arrow {
+		right: 20px;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+
+	.badges {
+		&> * {
+			width: 124px;
+			height: 30px;
+			display: inline-block;
+			margin-right: 10px;
+			margin-bottom: 10px;
+
+			img{
+				width: 100%;
+			}
+
+			&.download-btn {
+				@include font-family-medium();
+				font-size: 12px;
+				text-align: center;
+				background: #fff;
+				border-radius: 5px;
+				vertical-align: bottom;
+				line-height: 30px;
+				color: $blue;
+			}
+		}
+	}
+
+	.slide-1{
+		text-align: center;
+		.info{
+			top: 10px;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			display: inline-block;
+			.keyboard-text {
+				display: inline-block;
+				height: 79px;
+				width: 350px;
+			}
+			p{
+				margin-top: 10px;
+			}
+		}
+		.badges{
+			width: auto;
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+
+			&>*{
+				display: inline-block;
+			}
+		}
+	}
+
+	.slide-2{
+		text-align: left;
+		.info{
+			max-width: 275px;
+			.keyboard-text-mac {
+				display: inline-block;
+				width: 100%;
+			}
+			p{
+				margin-top: 20px;
+			}
+		}
+		.badges{
+			position: absolute;
+			bottom: 10px;
+		}
+	}
+	.hide {
+		display: none;
+	}
+}

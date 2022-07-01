@@ -1,0 +1,9 @@
+.FlagDialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .message {
+        width: 90%;
+    }
+}

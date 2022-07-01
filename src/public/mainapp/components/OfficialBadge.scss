@@ -1,0 +1,20 @@
+.OfficialBadge {
+    display: inline-flex;
+    position: relative;
+    margin-left: 4px;
+    height: 1em;
+
+    &:hover .Tooltip {
+        display: inline-block;
+        opacity: 1;
+        position: absolute;
+        z-index: 98;
+        left: 50%;
+        bottom: calc(1em + 6px);
+    }
+
+    .badge-image {
+        height: 100%;
+        width: auto;
+    }
+}

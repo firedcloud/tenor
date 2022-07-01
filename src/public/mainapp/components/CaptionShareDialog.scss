@@ -1,0 +1,58 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+.SharingView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .share-options {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+
+        &.mobile {
+            margin-top: 20px;
+
+            .touch-icon {
+                background-image: url('/assets/img/touch-icon.svg');
+                height: 40px;
+                width: 40px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-right: 8px;
+            }
+
+            .share-message {
+                line-height: 20px;
+                font-size: 15px;
+                display: flex;
+                flex-direction: column;
+                width: 12em;
+            }
+        }
+
+        &.desktop {
+            .copygif-icon {
+                background-image: url('/assets/img/copygif-icon.svg');
+                height: 40px;
+                width: 40px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-right: 8px;
+            }
+
+            .share-message {
+                line-height: 40px;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .download-gif-button {
+        @extend .button;
+        width: 100%;
+        display: inline-block;
+    }
+}

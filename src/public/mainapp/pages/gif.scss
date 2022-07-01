@@ -1,0 +1,223 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+
+.GifPage {
+    h1 {
+        font-size: 18px;
+    }
+    .Copybox input {
+        max-width: 500px;
+        border-radius: 3px;
+    }
+    .ShareIcon, .FlagIcon {
+        margin-right: 20px;
+        margin-top: 5px;
+      	margin-bottom: 5px;
+      	border-radius: 50%;
+      	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(50, 50, 93, 0.1);
+    }
+    .single-view-container {
+        #single-gif-container {
+            display: flex;
+            justify-content: center;
+
+          	.mute-button{
+            		position: absolute;
+            		width: auto;
+            		top: 0.5em;
+            		left: 0.5em;
+            		z-index: 100;
+            		outline: none;
+            		background-color: rgba(0, 0, 0, 0.6);
+            		border: none;
+            		border-radius: 23px;
+            		padding: 10px;
+            		padding-top: 11px;
+          	}
+            .Tooltip{
+                position: absolute;
+                top: calc(50% - 20px);
+                left: 50%;
+                bottom: auto;
+            }
+            .Gif{
+                max-height: 70vh;
+
+                img, video {
+                    height: 100%;
+                    width: auto;
+                    border-radius: 5px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+            .Sticker {
+                @include checker-background(20px);
+                max-height: unset; // NOTE height of stickers can be greater than the height of 70vh for gifs
+            }
+        }
+    }
+    .main-container {
+        display: inline-block;
+        width: 75%;
+        .gif-details-container {
+            .gif-actions {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap-reverse;
+                @include font-family-demi();
+                margin-top: 20px;
+
+                .author-username {
+                    font-size: 16px;
+                    vertical-align: top;
+                    line-height: 50px;
+                }
+                .profile-info {
+                    display: flex;
+                    align-items: center;
+                    order: 1;
+                }
+                .extra-controls{
+                    display: flex;
+                    align-items: center;
+                    order: 3;
+                }
+                .gif-actions-horizontal-spacer {
+                    order: 2;
+                    flex: 1 0 40px;
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-right: 20px;
+                    &.isMobile {
+                        margin-right: 0;
+                    }
+                }
+                .QualityToggle {
+                    @media (max-width: $small-max-width) {
+                        order: 2;
+                    }
+                }
+                .caption-gif-button {
+                    @extend .button;
+                    color: white;
+                    background-color: black;
+                    border: black;
+                    font-size: 13px;
+                    padding: 5px 12px;
+                    margin: 5px;
+                    margin-bottom: auto;
+                    line-height: 30px;
+                    @media (max-width: $small-max-width) {
+                        order: 1;
+                    }
+
+                    &:not([disabled]) {
+                        &:hover, &:focus {
+                            color: white;
+                            border-color: white;
+                            background-color: black;
+                        }
+                        &:active {
+                            color: white;
+                            border-color: white;
+                            background-color: black;
+                        }
+                    }
+                }
+                .FavButton {
+                    @media (max-width: $small-max-width) {
+                        order: 3;
+                    }
+                }
+            }
+            .tag-list{
+                display: inline-block;
+                padding-top: 20px;
+            }
+            .TagList, dl {
+                margin-bottom: 0;
+            }
+            .gif-details {
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: solid 1px #e8e8e8;
+
+                h3 {
+                    @include font-family-demi();
+                }
+                h4 {
+                    @include font-family-medium();
+                }
+
+                &.vertical-spacer {
+                    height: 100px;
+                }
+
+                &.share-buttons {
+                    padding-bottom: 20px;
+                    border-bottom: solid 1px #e8e8e8;
+                }
+
+                &.embed {
+                    border-top: none;
+                }
+
+                &.admin{
+                    h4{
+                        margin-top: 1.5em;
+                        margin-bottom: 0.5em;
+                    }
+                }
+            }
+        }
+    }
+    .related-gifs-container {
+        margin-top: 45px;
+        display: inline-block;
+        width: 25%;
+        padding-left: 20px;
+        vertical-align: top;
+    }
+
+    @media (max-width: $small-max-width) {
+        .main-container {
+            width: 100%;
+        }
+        .related-gifs-container {
+            margin-top: 30px;
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+}
+
+.QualityToggle {
+    vertical-align: top;
+    margin: 5px;
+    margin-right: 15px;
+    line-height: 30px;
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 4px 6px 0 rgba(83, 83, 92, 0.11);
+    &>button {
+        margin: 0 5px;
+        font-size: 13px;
+        color: #ccc;
+        border: none;
+        padding: 0px;
+        background: none;
+        display: inline;
+        @include font-family-bold();
+        &:not([disabled]){
+            cursor: pointer;
+        }
+        &.selected {
+            color: black;
+        }
+    }
+}

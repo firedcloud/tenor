@@ -1,0 +1,48 @@
+.CheckBoxInput {
+    width: fit-content !important;
+    height: fit-content !important;
+    position: relative !important;
+
+    * {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+    }
+
+    label {
+        input[type=checkbox] {
+        }
+        span.accessibility-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
+        div.stylized-checkbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fafafa;
+            border: 1px solid #99CAF1;
+
+            &.checked {
+                background-color: #e8f0fe;
+                border-color: #007add;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            span.iconfont-checkmark-thin {
+                color: #007add !important;
+            }
+        }
+    }
+}
+

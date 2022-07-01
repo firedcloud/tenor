@@ -1,0 +1,678 @@
+@import "../vars";
+
+
+body.ngdialog-open, html.ngdialog-open{
+	overflow: hidden;
+}
+body.force-scrollbar-visible, html.force-scrollbar-visible{
+	overflow-y: scroll; // NOTE ensures that scrollbar remains when dialog opens so that the page doesn't resize
+}
+.ngdialog.ngdialog-theme-default{
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-top: unset;
+	padding-bottom: unset;
+}
+.ngdialog.ngdialog-theme-default .ngdialog-content, .LegacySignupPage {
+	width: 500px;
+	padding: 30px;
+	@include font-family-regular();
+	color: $off-black;
+	background-color: white;
+
+	@media (max-width: $smallest-max-width) {
+		padding: 10px 20px;
+	}
+
+	h1{
+		font-size: 25px;
+		line-height: 1.1;
+		@include font-family-bold();
+		margin-bottom: 20px;
+
+		@media (max-width: $smallest-max-width) {
+			font-size: 20px;
+			margin-bottom: 15px;
+		}
+	}
+	h2{
+		font-size: 18px;
+		line-height: 1.1;
+		text-align: center;
+		@include font-family-regular();
+		color: $off-black-2;
+		margin-bottom: 10px;
+
+		@media (max-width: $smallest-max-width) {
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+	}
+	p{
+		@include font-family-text-regular();
+		font-size: 15px;
+		line-height: 1.6;
+		color: $off-black-2;
+	}
+
+	label{
+		margin-top: 12px;
+	}
+	label, input{
+		display: block;
+		width: 100%;
+		@include font-family-text-regular();
+		line-height: 1.4;
+	}
+	label, input, .errors div{
+		line-height: 1.4;
+		margin-bottom: 5px;
+	}
+	label, .errors div{
+		font-size: 15px;
+	}
+	input{
+		background-color: $off-white;
+		border-style: solid;
+		border-width: 1px;
+		border-color: $light-grey;
+		@include font-family-bold();
+		line-height: 1.4;
+		color: $off-black;
+		padding: 10px 14px;
+		@include placeholder(){
+			color: $light-grey-4;
+		}
+	}
+	input[type=submit]{
+		@extend .button;
+	}
+	.signup-tos, .opt-in-checkboxes {
+		label {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 100%;
+			font-size: 12px;
+			font-weight: 700;
+
+			input[type=checkbox] {
+				cursor: pointer;
+				width: 20px;
+				margin-right: 10px;
+				margin-bottom: 0px;
+
+			}
+		}
+	}
+
+	.opt-in-error {
+		color: #ee3322;
+		margin-bottom: 10px;
+	}
+
+	.errors{
+		div{
+			@include font-family-text-regular();
+			font-size: 13px;
+			line-height: 1.6;
+		}
+	}
+}
+.LegacySignupPage {
+	width: unset;
+	max-width: 800px;
+	margin: 0 auto;
+	video.background-animation {
+		display: none !important;
+	}
+}
+.ngdialog-container-auth-dialog {
+	width: fit-content !important;
+	max-width: 823px !important;
+	padding: 0 !important;
+	background-color: transparent !important;
+
+	.ngdialog-close {
+		top: 18px !important;
+		right: 18px !important;
+		width: 20px !important;
+		height: 20px !important;
+		border-radius: 0 !important;
+		z-index: 5;
+
+		&:before {
+			width: unset !important;
+			height: unset !important;
+			border-radius: 0 !important;
+			color: white !important;
+			position: absolute !important;
+			top: unset !important;
+			right: unset !important;
+			font-size: 34px !important;
+			line-height: 20px !important;
+			margin: 0 !important;
+		}
+		&:hover:before {
+			opacity: .7;
+		}
+	}
+}
+
+.ngdialog-container-auth-dialog, .LegacySignupPage {
+	.auth-dialog {
+		position: relative;
+		overflow: hidden;
+		border-radius: 10px;
+		transform: translate3d(0, 0, 0); // NOTE fixes video overflow on iOS issue
+
+		&.signup-splash {
+			border-radius: 6px;
+		}
+
+		video.background-animation {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 1;
+			height: 100%;
+		}
+
+		.video-filter {
+			position: absolute;
+			top: 0;
+			z-index: 2;
+			background-image: linear-gradient(to left, rgba(76,175,255,.7), rgba(46,147,230,.7));
+			height: 100%;
+			width: 100%;
+		}
+
+		.download-button {
+			margin-top: 15px;
+		}
+
+		.content {
+			position: relative;
+			display: flex;
+			z-index: 3;
+			flex-direction: column;
+
+			&.signup-splash {
+				padding: 56px;
+				flex-direction: row;
+
+				@media (max-width: $small-max-width) {
+					flex-direction: column;
+					padding: 0;
+				}
+			}
+
+			.other-content {
+				width: 276px;
+				margin-right: 90px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: flex-start;
+
+				h1 {
+					@include font-family-text-extrabold();
+					color: white;
+					font-size: 46px;
+					line-height: 56px;
+				}
+			}
+
+			.header {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 56px;
+				width: 100%;
+			}
+
+
+			.auth-content {
+				width: 304px;
+				background-color: white;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				border-radius: 0;
+
+				&.signup-splash {
+					min-height: 412px;
+					padding: 40px 24px;
+					border-radius: 5px;
+					h1 {margin: 0 0 16px 0;}
+					p {margin: 0 0 38px 0;}
+					.GoogleSigninButton {margin: 0 0 16px 0;}
+
+					@media (max-width: $small-max-width) {
+						margin: 0 8px 32px 8px;
+					}
+				}
+
+				&.signup-username {
+					min-height: 446px;
+					padding: 24px;
+					h1 {margin: 0 0 16px 0;}
+					.avatar-selector {margin: 0 0 28px 0;}
+					input[type='submit'] {margin: 16px 0 0 0;}
+				}
+
+				&.login {
+					min-height: 446px;
+					padding: 36px 24px 24px 24px;
+					h1 {margin: 0 0 28px 0;}
+					.GoogleSigninButton {margin: 0 0 40px 0;}
+					.horizontal-rule {margin: 0 0 32px 0;}
+					input {margin: 0 0 8px 0;}
+					.forgot-password {margin: 0;}
+					input[type='submit'] {margin: 8px 0 0 0;}
+				}
+
+				&.login-associated-account {
+					min-height: 446px;
+					padding: 24px 24px 24px 24px;
+					h1 {margin: 0 0 16px 0;}
+					p {margin: 0 0 24px 0;}
+					.email-address {
+						@include font-family-text-bold();
+						text-align: center;
+						font-size: 16px;
+						line-height: 22px;
+						color: #2b2b2b;
+						margin: 0 0 20px 0;
+					}
+					input {margin: 0 0 8px 0;}
+					.forgot-password {margin: 0;}
+					input[type='submit'] {margin: 8px 0 0 0;}
+				}
+
+				&.account-linking {
+					min-height: unset;
+					padding: 40px 24px 24px 24px;
+					h1 {margin: 0 0 22px 0;}
+					p {margin: 0 0 44px 0;}
+				}
+
+				&.legacy-signup {
+					width: 100%;
+					min-height: unset;
+					padding: 24px;
+				}
+
+				.top, .bottom {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					width: 100%;
+
+					& > * {width: 100%;}
+				}
+
+				.errors-section {
+					text-align: center;
+
+					.errors {
+						margin: 0;
+
+						div {
+							@include font-family-text-bold();
+							font-size: 12px;
+							line-height: 16px;
+							color: #FF0000;
+						}
+					}
+				}
+
+				input:not([type='submit']) {
+					border-radius: 3px;
+					border-color: #c7c7c7;
+					height: 48px;
+
+					&.error {
+						color: $red;
+						border-color: $red;
+					}
+				}
+
+				h1, p {
+					text-align: center;
+				}
+
+				h1 {
+					@include font-family-bold();
+					color: $blue;
+					font-size: 24px;
+					line-height: 29px;
+					font-weight: 700;
+				}
+
+				P {
+					@include font-family-text-semibold();
+					font-size: 16px;
+					line-height: 22px;
+					color: #373A3C;
+				}
+
+				label {margin: 0;}
+
+				label.hidden {
+					visibility: hidden; // NOTE we want to hide label but retain for accessibility
+					width: 0;
+					height: 0;
+					margin: 0;
+				}
+
+				.username-input-wrapper {
+					position: relative;
+
+					input {
+						padding-left: 30px;
+					}
+
+					div {
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						left: 12px;
+						line-height: 1;
+					    width: auto;
+						font-size: 14px;
+
+						@include font-family-text-bold();
+						color: #99CAF1;
+
+						&.focused {
+							color: $blue;
+						}
+					}
+
+				}
+
+				.avatar-selector {
+					position: relative;
+					width: auto;
+					cursor: pointer;
+					input {display: none}
+
+					.avatar-circle {
+						display: flex;
+					    justify-content: center;
+					    align-items: center;
+						overflow: hidden;
+						background: #E8E8E8;
+						border-radius: 40px;
+						height: 80px;
+						width: 80px;
+
+						.iconfont-profile-icon-new {
+							color: #C7C7C7;
+							font-size: 40px;
+						}
+					}
+
+					img {
+						&.portrait {
+							width: 100%;
+							height: unset;
+						}
+						&.landscape {
+							width:unset;
+							height: 100%;
+						}
+						&.square {
+							width: 100%;
+							height: 100%;
+						}
+					}
+
+					.plus-circle {
+						position: absolute;
+						bottom: -3px;
+						right: -3px;
+						padding: 10px;
+						padding: 4px;
+					    background: white;
+					    border-radius: calc((20px + 2 * 4px) / 2);
+						line-height: 1;
+
+						.iconfont-plus-circle {
+							font-size: 20px;
+							color: $blue
+						}
+					}
+				}
+
+				.signup-tos-info, .signup-tos-checkbox {
+					display: flex;
+					align-items: center;
+
+					.tos-info {
+						@include font-family-medium();
+						font-size: 12px;
+						line-height: 16px;
+						color: #535353;
+						a {
+							color: #535353;
+							text-decoration: underline;
+						}
+					}
+				}
+				.signup-tos-info .tos-info {
+					text-align: center;
+				}
+				.signup-tos-checkbox {
+					padding: 0 8px;
+
+					.CheckBoxInput {
+						margin: 0 12px 0 0;
+					}
+					.tos-info {
+						text-align: left;
+					}
+				}
+
+				.google-signin-section {
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+
+					.horizontal-rule {
+						position: relative;
+						height: 2px;
+						width: 100%;
+						display: flex;
+						align-items: center;
+
+						hr {
+							width: 100%;
+							border: none;
+						    height: 1px;
+						    background-color: #c7c7c7;
+
+						}
+						div {
+							position: absolute;
+							left: 50%;
+							right: 50%;
+							transform: translateX(-50%);
+							height: fit-content;
+							width: calc(14px + 2*(4px));
+							background: white;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+
+							span {
+								position: relative;
+								@include font-family-text-semibold();
+								font-size: 14px;
+								color: #C7C7C7;
+								line-height: 1;
+							}
+						}
+					}
+				}
+				.login-mode {
+					@include font-family-text-semibold();
+					font-size: 14px;
+					line-height: 19px;
+					color: #535353;
+					text-align: center;
+                    width: 100%;
+                    margin-bottom: 38px;
+
+					a {margin: 0}
+				}
+			}
+			.forgot-password {
+				width: 100%;
+				display: block;
+				text-align: right;
+				line-height: 1;
+
+				a {
+					position: relative;
+					right: 12px;
+					@include font-family-text-semibold();
+					font-size: 12px;
+					line-height: 16px;
+					color: #4a4a4a;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+.ngdialog-container-opt-in-dialog {
+	background-image: linear-gradient(to right, #4cafff, #2e93e6) !important;
+
+	.ngdialog-close:before {
+		color: white !important;
+		font-size: 20px !important;
+	}
+}
+.ngdialog.ngdialog-theme-default .ngdialog-container-popup-dialog {
+	padding: 0 !important;
+	width: fit-content !important;
+	background: transparent !important;
+
+	.ngdialog-close {
+		display: none !important;
+	}
+	.link-success-popup {
+		padding: 32px 24px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(270deg, #4CAFFF 0%, #2E93E6 100%);
+		border-radius: 16px;
+
+		.iconfont-success-icon {
+			font-size: 78px;
+			color: white;
+			margin-bottom: 14px;
+		}
+		h1 {
+			width: 160px;
+			@include font-family-bold();
+			font-size: 22px;
+			line-height: 28px;
+			color: white;
+			text-align: center;
+			margin: 0;
+		}
+	}
+}
+.ngdialog-container-static-image-dialog {
+	.ngdialog-close:before {
+		display: none;
+	}
+}
+.ngdialog-close{
+	width: 15px;
+	height: 15px;
+}
+.ngdialog.ngdialog-theme-default .ngdialog-close:before{
+	width: 15px;
+	height: 15px;
+	border-radius: 3px;
+	color: $off-black;
+	top: 30px;
+	right: 30px;
+	margin-top: -10px;
+}
+.ngdialog.ngdialog-theme-default {
+	$animationDuration: 300; // NOTE must match 'animationDuration' variable in dialog.js
+	@keyframes ngdialog-fadeout{
+		0%{opacity:1}
+		100%{opacity:0}
+	}
+	@keyframes ngdialog-fadein{
+		0%{opacity:0}
+		100%{opacity:1}
+	}
+	@keyframes ngdialog-zoomIn {
+		from {
+			opacity: 0;
+			transform: scale3d(0.01, 0.01, 0.01);
+		}
+		50% {opacity: 0;}
+		to {opacity: 1; }
+	}
+	@keyframes ngdialog-zoomOut {
+		from {opacity: 1;}
+		50% {opacity: 0;}
+		to {
+			opacity: 0;
+			transform: scale3d(0.01, 0.01, 0.01);
+		}
+	}
+
+	.ngdialog-overlay, .ngdialog-content {
+		animation-fill-mode: forwards;
+		animation-timing-function: ease;
+		animation-duration: #{$animationDuration}ms;
+	}
+
+	.ngdialog-overlay {
+		position:fixed;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+	    background:rgba(0,0,0,.4);
+	    animation-name: ngdialog-fadein;
+	}
+	.ngdialog-content {
+		animation-name: ngdialog-zoomIn;
+	}
+
+	&.ngdialog-transitioning {
+		.ngdialog-overlay {
+			animation: none !important;
+		}
+		.ngdialog-content {}
+	}
+
+	&.ngdialog-closing {
+		.ngdialog-overlay {
+			animation-name: ngdialog-fadeout;
+		}
+		.ngdialog-content {
+			animation-name: ngdialog-zoomOut;
+		}
+	}
+}

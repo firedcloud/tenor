@@ -1,0 +1,16 @@
+@import "scss/_vars.scss";
+
+.error-page{
+    h1, p{
+        text-align: center;
+    }
+}
+
+@media (max-width: $small-max-width) {
+    .error-page{
+        p{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}

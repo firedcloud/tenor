@@ -1,0 +1,56 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+#GifEditor{
+	position: relative;
+	line-height: 0;
+	width: 100%;
+	height: 100%;
+	// display: flex;
+	@include checker-background(20px);
+
+	canvas{
+		// Needed so that the font is pre-loaded before a caption is added.
+		font-family: Ubuntu;
+		font-weight: 500;
+		width: 100%;
+		cursor: pointer;
+		&.render{
+			display: none;
+		}
+	}
+
+	.img-preview-container {
+		position: relative;
+		// width: 50px;
+		// height: 50px;
+		width: 100%;
+		height: 100%;
+
+		img, video {
+			width: 100%;
+			height: 100%;
+		}
+
+		.overlay {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			// width: 400px;
+			// height: 400px;
+			// background: blue;
+			background-color: rgba(0, 0, 0, .7);
+			text-align: center;
+
+			span {
+				font-size: 50px;
+				color: white;
+			}
+		}
+	}
+}

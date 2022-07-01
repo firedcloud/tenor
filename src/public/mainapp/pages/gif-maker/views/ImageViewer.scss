@@ -1,0 +1,197 @@
+@import '../common.scss';
+
+.GifMakerPage .ImageViewer {
+    z-index: 100;
+    display: flex;
+    background-color: black;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right:0;
+    top: 0;
+
+    @media(max-width: $small-max-width) {
+        flex-direction: column;
+    }
+
+    .gif-image-panel {
+        display: flex;
+        position: relative;
+        height: 100%;
+        flex: 1;
+
+        @media(max-width: $small-max-width) {
+            width: 100%;
+            height: unset;
+            flex: 1;
+        }
+
+        & > * {
+            position: absolute;
+        }
+
+        .img-panel {
+            top: 128px;
+            bottom: 128px;
+            left: 16px;
+            right: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media(max-width: $small-max-width) {
+                top: 88px;
+                bottom: 88px;
+            }
+
+            &.ios-swipe-padding-fix {
+                // NOTE Prevent browser navigation by touch events
+                // near left/right sides of ios device
+                left: 26px;
+                right: 26px;
+            }
+
+            .img-wrapper {
+                position: relative;
+
+                .gif-img-preview {
+                    width: 100%;
+                    height: 100%;
+                    user-select: none;
+                }
+
+                .trim-scrubber-wrapper {
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0px;
+                    transform: translate(0, 100%);
+                }
+            }
+        }
+
+        .header-buttons {
+            display: flex;
+            width: 100%;
+            padding: 0 13px;
+            left: 0;
+            top: 0;
+            justify-content: space-between;
+            height: 64px;
+            align-items: center;
+
+            &.viewer {
+
+            }
+
+            &.editing {
+
+            }
+
+            .editor-buttons {
+                display: flex;
+
+                .reset-button {
+                    display: flex;
+                    color: white;
+                    font-size: 16px;
+                    padding: 5px 12px;
+                    width: unset;
+                    @include font-family-text-bold;
+
+                    @media(max-width: $small-max-width) {
+                        margin: 0;
+                    }
+                }
+            }
+
+            .left, .right {
+                display: flex;
+            }
+
+            button {
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 1);
+                transition: background-color .2s linear;
+                margin-right: 8px;
+
+                &:hover {
+                    background-color: rgba(66, 66, 66, 1);
+                }
+
+                span[class*='iconfont-'] {
+                    font-size: 16px;
+                    color: white;
+                }
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+        .previous-button, .next-button {
+            width: 250px;
+            top: 10vh;
+            height: 90vh;
+
+            @media(max-width: $small-max-width) {
+                width: 30%;
+            }
+
+            &.hidden {
+                display: none;
+            }
+
+            .button-icon {
+                position:absolute;
+                background-color: rgba(66, 66, 66, 0);
+                display: flex;
+                top: 4 / 9 * 100%;
+                height: 56px;
+                width: 56px;
+                border-radius: 28px;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+                transition: visibility .1s linear, background-color .1s linear;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                @media(max-width: $small-max-width) {
+                    visibility: visible;
+                    background-color: rgba(66, 66, 66, .54);
+                    transform: translate(0, -50%);
+                }
+            }
+
+            &:hover .button-icon {
+                visibility: visible;
+                background-color: rgba(66, 66, 66, .54);
+            }
+        }
+        .previous-button {
+            left: 0;
+            .button-icon {
+                @media(max-width: $small-max-width) {
+                    left: 8px;
+                }
+            }
+        }
+        .next-button {
+            right: 0;
+            .button-icon {
+                @media(max-width: $small-max-width) {
+                    right: 8px;
+                    left: unset;
+                }
+            }
+        }
+    }
+    .editor-panel {
+
+    }
+}

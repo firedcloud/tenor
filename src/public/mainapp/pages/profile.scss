@@ -1,0 +1,151 @@
+@import "scss/_vars.scss";
+
+.ProfilePage, .BrandedPartnerPage {
+	.content{
+		margin-top: 1em;
+
+		.media-section {
+			display: inline-block;
+			width: 100%;
+
+			@media(max-width: 591px){
+				// add section border that spans width of page
+				margin: 0 -15px;
+				padding-left: 15px;
+				padding-right: 15px;
+				padding-bottom: 18px;
+
+				box-sizing: content-box;
+				border-top: 1px solid #E0E0E0;
+			}
+
+			.media-section-header {
+				display: flex;
+				justify-content: space-between;
+				padding: 18px 0;
+
+				h2 {
+					font-size: 25px;
+					line-height: 24px;
+					color: #2B2B2B;
+					margin: 0; // needed?
+				}
+
+				a {
+					@include font-family-regular();
+					font-size: 18px;
+					line-height: 24px;
+					color: $blue;
+				}
+
+				@media(max-width: $small-max-width) {
+					h2 {
+						font-size: 16px;
+						line-height: 18px;
+					}
+					a {
+						font-size: 14px;
+						line-height: 18px;
+					}
+				}
+			}
+		}
+
+		.no-gifs{
+			background-color: white;
+			text-align: center;
+			padding-bottom: 60px;
+			position: relative;
+			padding-top: 229px;
+			border: 1px dashed $medium-grey-3;
+
+			h2{
+				font-size: 18px;
+				line-height: 1.47;
+				margin-bottom: 10px;
+			}
+			p{
+				@include font-family-medium();
+				font-size: 13px;
+				line-height: 1.44;
+				width: 274px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.img1, .img2, .img3{
+				position: absolute;
+				box-shadow:0 1px 3px 0 $button-shadow-color-2, 0 4px 6px 0 $button-shadow-color-3;
+			}
+			.img1{
+				transform: rotate(-15deg);
+				top: 61px;
+				left: 54px;
+			}
+			.img2{
+				top: 79px;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.img3{
+				transform: rotate(-345deg);
+				top: 56px;
+				right: 54px;
+			}
+
+			.button{
+				display: block;
+				margin-top: 100px;
+				margin-left: 68px;
+				margin-right: 68px;
+			}
+		}
+	}
+}
+
+.LinkTag {
+	@include font-family-bold();
+	@extend .scale-behavior;
+	width: 160px;
+	height: 80px;
+	background-color: grey;
+	background-position: center;
+	margin-right: 20px;
+	display: inline-block;
+	border-radius: 3px;
+	color: white;
+	position: relative;
+	font-weight: bold;
+	background-size: cover;
+	overflow: hidden;
+	vertical-align: bottom;
+	box-shadow: 0 2px 10px 0 rgba(83,83,92,0.11), 0 2px 4px 0 rgba(0,0,0,0.12);
+
+	@media (max-width: $small-max-width) {
+		margin-right: 10px !important;
+	}
+
+	.term {
+		font-size: 18px;
+		position: absolute;
+		left: 5px;
+		right: 5px;
+		bottom: 0px;
+		top: 0px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-shadow: 0 0.5px 0 #000000;
+		overflow: hidden;
+		line-height: 120px;
+		text-align: center;
+	}
+}
+
+.BrandedPartnerCategory {
+	margin-bottom: 20px;
+	.category-links-list {
+		white-space: nowrap;
+		overflow-x: auto;
+	}
+}

@@ -1,0 +1,11 @@
+@import "scss/_vars.scss";
+
+.ProgressBar {
+	height: 3px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 100vw;
+	background-color: $blue;
+	z-index: 1050;
+}

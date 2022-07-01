@@ -1,0 +1,323 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+@import "scss/components/menu.scss";
+
+.NavBar {
+	width: 100%;
+	background-color: white;
+	height: 50px;
+	border-bottom: 1px solid #ebf2f7;
+
+    &.blue-box-shadow {
+        box-shadow: 0px 0px 20px -5px rgba(1, 132, 219, 0.19), 0px -5px 56px -14px rgba(1, 132, 219, 0.5);
+    }
+	.navbar-brand {
+		margin-top: 9px;
+		margin-right: 0;
+		width: 0; // NOTE: For narrow mobile devices. Ensures that navbar elements on don't wrap and mess up page styling.
+	}
+	.nav-buttons {
+		display: inline-block;
+		float: right;
+		.account-buttons {
+			display: inline-block;
+			// vertical-align: top;
+
+			&>*{
+				display: inline-block;
+				margin-top: 8px;
+				margin-left: 20px;
+				vertical-align: top;
+
+				@media (max-width: $small-max-width) {
+					margin-left: 8px;
+				}
+			}
+
+			.button, .white-button {
+				font-size: 13px;
+				padding: 7px 15px;
+
+				@media (max-width: $small-max-width) {
+					font-size: 12px;
+					padding: 7px 8px;
+				}
+			}
+			.upload-button {
+				img {
+					margin-right: 8px;
+					height: 17px;
+
+					@media (max-width: $small-max-width) {
+						height: 14px;
+					}
+				}
+			}
+			.navbar-icon{
+				position: relative;
+				&:not([disabled]){
+					&:hover, &:focus{
+						&>span{
+							color: $off-black;
+							border-color: $off-black;
+							background-color: white;
+						}
+					}
+					&:active, &.active{
+						&>span{
+							color: $blue;
+							border-color: $blue;
+							background-color: white;
+						}
+					}
+				}
+				&>span{
+					@extend .button-base;
+					position: relative;
+					display: inline-block;
+					border-color: $off-black;
+					background-color: white;
+					color: $off-black;
+					border-radius: 50%;
+					width: 32px;
+					height: 32px;
+					line-height: 32px;
+				}
+
+				&.notifications{
+					.pending-notifications-count{
+						@include font-family-demi();
+						font-size: 8px;
+						width: 12px;
+						height: 12px;
+						line-height: 12px;
+						border-radius: 6px;
+						background-color: rgba(238, 51, 34, 0.97);
+						color: white;
+						text-align: center;
+						position: absolute;
+						top: 0;
+						right: 0;
+						z-index: 100;
+					}
+				}
+				&.notifications .menu{
+				    @media (max-width: 519px) {
+				    	width: auto;
+					    position: fixed;
+					    top: 52px;
+					    left: 10px;
+					    right: 10px;
+				    }
+
+					.notifications-list{
+						height: 469px;
+						&.has-notifications{
+							overflow-y: scroll;
+						}
+						.notification{
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							font-size: 13px;
+							color: $off-black;
+							padding-left: 20px;
+							padding-top: 15px;
+							padding-bottom: 15px;
+							min-height: 72px; // 42 + the padding
+
+							&.pending{
+								background-color: $light-grey-6;
+								&:hover{
+									background-color: $light-grey-7;
+								}
+							}
+
+							&>*{
+								vertical-align: middle;
+								flex-grow: 0;
+								flex-shrink: 0;
+							}
+							&:hover{
+								text-decoration: none;
+							}
+
+							.msg{
+								// The other elements have a set width, but the message
+								// grows as needed. The width will be variable depending
+								// on the size of the scrollbar the browser adds.
+								flex-grow: 1;
+								flex-shrink: 1;
+								margin-left: 10px;
+								line-height: 1.6;
+								a{
+									@include font-family-demi();
+									color: $blue;
+									&:hover{
+										text-decoration: underline;
+										color: $blue-4;
+									}
+								}
+							}
+							.timestamp{
+								color: $medium-grey-3;
+								text-align: right;
+								margin-left: 10px;
+								width: 35px;
+							}
+						}
+
+						&.no-notifications{
+							width: 242px;
+							height: 132px;
+							margin-left: auto;
+							margin-right: auto;
+							p{
+								@include font-family-regular();
+								font-size: 13px;
+								line-height: 1.6;
+								color: $off-black;
+								margin-top: 30px;
+								margin-bottom: 20px;
+							}
+							.button{
+								width: 100%;
+								margin: 0;
+								display: block;
+							}
+						}
+					}
+				}
+				&.profile{
+					.menu{
+						width: 170px;
+					}
+					a{
+						@include font-family-demi();
+						font-size: 13px;
+						color: $off-black;
+						height: auto;
+						line-height: 1;
+						padding: 10px 20px;
+						.username{
+							line-height: 1.08;
+							color: $off-black;
+							margin: 0;
+						}
+						.subheading {
+							@include font-family-regular();
+							font-size: 10px;
+							color: $medium-grey-3;
+							line-height: 1.2;
+						}
+						.upload {
+							@media (min-width: $small-max-width) {
+								display: none
+							}
+						}
+					}
+				}
+			}
+		}
+		.menu-button {
+			display: inline-block;
+			padding: 23px 15px;
+			margin-left: 5px;
+			font-size: 0.7em;
+			vertical-align: top;
+
+			@media (max-width: $small-max-width) {
+				padding: 23px 15px 23px 8px;
+				margin-left: 0;
+			}
+		}
+	}
+	.container {
+		position: relative;
+		padding-right: 0;
+	}
+	.animated {
+	  animation-duration: 0.25s;
+	}
+}
+
+.NavMenu {
+	display: none;
+	background-color: white;
+	box-shadow: 0 0 1px 0 $button-shadow-color-2, 0 8px 16px 0 $button-shadow-color-3;
+	position: absolute;
+	top: 60px;
+	right: 5px;
+	left: 5px;
+	padding: 50px 90px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	max-height: calc(100vh - 60px);
+	overflow-y: scroll;
+	z-index: 1000;
+	.menu-section {
+		margin: 0 10px 10px 0;
+		display: inline-block;
+		vertical-align: top;
+		li {
+			display: block;
+		}
+		.menu-header {
+			@include font-family-bold();
+			font-size: 25px;
+			margin-bottom: 15px;
+			text-transform: uppercase;
+		}
+		.menu-item {
+			@include font-family-medium();
+			display: block;
+			font-size: 13px;
+			margin-bottom: 15px;
+			a {
+				color: black;
+			}
+		}
+		.menu-item:last-child {
+			margin-bottom: 0px;
+		}
+		.inner-col {
+			display: inline-block;
+			margin-right: 30px;
+			.menu-item {
+				max-width: 140px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+		}
+		.inner-col:last-child {
+			margin-right: 0;
+		}
+	}
+	@media (max-width: $small-max-width) {
+		padding: 20px;
+		justify-content: flex-start;
+		.menu-section {
+			width: 150px;
+			font-size: 0.9em;
+			.menu-header {
+				font-size: 16px;
+				margin-bottom: 10px;
+			}
+			.menu-item {
+				margin-bottom: 10px;
+			}
+		}
+	}
+	@media (max-width: $mobile-portrait-max-width) {
+		.menu-section {
+			width: calc(50% - 20px) !important;
+		}
+	}
+}
+
+.active .NavMenu{
+	display: flex;
+	animation-name: menuFadeInDown;
+	animation-duration: 0.5s;
+}

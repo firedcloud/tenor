@@ -1,0 +1,46 @@
+
+.OptInDialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+
+    .opt-in-message {
+        font-weight: 700;
+        width: 90%
+    }
+    .opt-in-backarrow {
+        height: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        a {
+            width: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    }
+    .opt-in-checkboxes {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90%;
+        .opt-in-reject, .opt-in-decline {
+            color: lightblue;
+            font-weight: 300;
+        }
+    }
+    .opt-in-link-to-tos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 12px;
+        a {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+}

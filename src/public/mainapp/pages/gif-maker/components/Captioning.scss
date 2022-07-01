@@ -1,0 +1,154 @@
+@import '../common.scss';
+
+.GifMakerPage .EditorPanel .CaptioningTools {
+    width: 100%;
+
+    .caption-textarea {
+        width: 100%;
+        min-height: 60px;
+    }
+
+    .caption-color-label {
+        label {
+            @include font-family-text-semibold;
+            font-size: 14px;
+            line-height: 19px;
+            margin-bottom: 8px;
+        }
+    }
+
+    .caption-colors {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+        width: 100%;
+        justify-content: space-between;
+
+        @media(max-width: $small-max-width) {
+            margin: 0;
+        }
+
+        .caption-color-option {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            border: 1px grey solid;
+
+            div {
+                width: 30px;
+                height: 30px;
+                border-radius: 15px;
+            }
+            &.selected {
+                border: solid 3px $blue;
+            }
+        }
+    }
+}
+
+#GifEditor .CaptionCanvas {
+    z-index: 100000;
+    position: absolute;
+    overflow: hidden;
+
+    canvas.caption {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0);
+        height: 100%;
+        width: 100%;
+    }
+
+    .caption-box-container {
+        position: absolute;
+
+        #captionInput {
+            width: 100%;
+            height: 100%;
+            font-family: Ubuntu;
+            text-align: center;
+            resize: none;
+            border: dotted 1px;
+            outline: none;
+            line-height: 1;
+            font-weight: normal;
+            overflow: hidden;
+            background: transparent;
+            color: white;
+            overflow-wrap: break-word;
+            -webkit-text-fill-color: transparent; /* NOTE sets just the text color, we want cursor to be visible*/
+            box-shadow: 0 0 0 5000px rgba(0, 0, 0, 0.3);
+            padding: 0;
+
+            &.dragged {
+                user-select: none;
+
+                -webkit-user-select: none;
+                -webkit-touch-callout: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        div[id*="caption-corner-"] {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media(max-width: $small-max-width) {
+                width: 42px;
+                height: 42px;
+            }
+
+            div {
+                pointer-events: none;
+                background-color: white;
+                width: 10px;
+                height: 10px;
+                border-radius: 5px;
+            }
+
+            &.selected div {
+                background-color: $blue;
+            }
+        }
+
+        #caption-corner-nw {
+            cursor: nw-resize;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
+        }
+        #caption-corner-ne {
+            cursor: ne-resize;
+            right: 0;
+            top: 0;
+            transform: translate(50%, -50%);
+        }
+        #caption-corner-sw {
+            cursor: sw-resize;
+            left: 0;
+            bottom: 0;
+            transform: translate(-50%, 50%);
+        }
+        #caption-corner-se {
+            cursor: se-resize;
+            right: 0;
+            bottom: 0;
+            transform: translate(50%, 50%);
+        }
+    }
+}

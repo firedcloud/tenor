@@ -1,0 +1,31 @@
+@import "scss/_vars.scss";
+
+.GifRestrictedMessage {
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    color: #000000;
+
+    .header {
+        @include font-family-bold();
+        font-size: 20px;
+        margin: 0;
+        margin-bottom: 8px;
+    }
+    .msg {
+        @include font-family-text-regular();
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0;
+    }
+    a {
+        @include font-family-text-regular();
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0;
+    }
+}

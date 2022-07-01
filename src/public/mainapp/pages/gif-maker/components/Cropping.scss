@@ -1,0 +1,161 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+@import '../common.scss';
+
+.GifMakerPage .EditorPanel .CroppingTools {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .crop-tools {
+        margin-bottom: 8px;
+    }
+
+    .crop-dim-setting {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+
+        @media(max-width: $small-max-width) {
+            margin: 0;
+        }
+
+        label {
+            @include font-family-text-semibold;
+            font-size: 14px;
+            line-height: 19px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            @include font-family-text-regular;
+            font-size: 16px;
+            line-height: 22px;
+            height: 40px;
+            width: 80px;
+        }
+    }
+    .crop-aspect-ratio-buttons {
+        display: flex;
+        width: 100%;
+
+        @media(max-width: $small-max-width) {
+            justify-content: space-around;
+        }
+
+        & > div:not(:last-child) {
+            margin-right: 30px;
+        }
+
+        .crop-aspect-ratio-setting {
+            display: flex;
+            flex-direction: column;
+            width: 20px;
+            align-items: center;
+
+            .crop-ratio-button {
+                height: 20px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .aspect-ratio-box {
+                    border: 1px solid white;
+                }
+
+                &.selected .aspect-ratio-box {
+                    background: $blue;
+                }
+            }
+            label {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+#GifEditor .CropGrid {
+    z-index: 100000;
+    position: absolute;
+    overflow: hidden;
+
+    .crop-grid-wrapper {
+        position: absolute;
+
+        #cropTool.crop-area {
+            position: absolute;
+            box-sizing: content-box;
+            border: 2px solid white;
+            box-shadow: 0 0 0 5000px rgba(0, 0, 0, 0.3);
+            cursor: move; //grabbing
+
+            div[class*='grid-'] {
+                pointer-events: none;
+                position: absolute;
+                box-sizing: content-box;
+            }
+            .grid-1 {
+                border-left: solid white;
+                border-right: solid white;
+                transform: translate(-50%);
+                left: 50%;
+                height: 100%;
+            }
+            .grid-2 {
+                border-top: solid white;
+                border-bottom: solid white;
+                transform: translate(0, -50%);
+                top: 50%;
+                width: 100%;
+            }
+
+            div[class*="crop-corner-"] {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @media(max-width: $small-max-width) {
+                    width: 42px;
+                    height: 42px;
+                }
+
+                div {
+                    pointer-events: none;
+                    background-color: white;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 5px;
+                }
+            }
+
+            .crop-corner-nw {
+                cursor: nw-resize;
+                left: 0;
+                top: 0;
+                transform: translate(-50%, -50%);
+            }
+            .crop-corner-ne {
+                cursor: ne-resize;
+                right: 0;
+                top: 0;
+                transform: translate(50%, -50%);
+            }
+            .crop-corner-sw {
+                cursor: sw-resize;
+                left: 0;
+                bottom: 0;
+                transform: translate(-50%, 50%);
+            }
+            .crop-corner-se {
+                cursor: se-resize;
+                right: 0;
+                bottom: 0;
+                transform: translate(50%, 50%);
+            }
+        }
+    }
+}

@@ -1,0 +1,99 @@
+@import "scss/_vars.scss";
+
+.about-press {
+	.presstitle{
+		text-align: center;
+
+		h1{
+			margin-bottom: 1em;
+			display: block;
+			@media(max-width: $small-max-width) {
+				margin-bottom: .5em;
+			}
+			img{
+				height: 26px;
+				margin-bottom: 2px;
+			}
+		}
+	}
+	.buttons-container {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		.assets, .contact {
+			width: 260px;
+			display: inline-block;
+			border: 2px solid $blue;
+			border-radius: 4px;
+			color: $blue;
+			background-color: #fff;
+			padding: 8px 24px;
+			font-size: 18px;
+			line-height: 36px;
+			text-align: center;
+			margin: 1em 1em 0 1em;
+		}
+	}
+	.quotes {
+		padding: 0;
+
+		li {
+			list-style: none;
+			border-bottom: 1px solid #ccc;
+			padding-top: 2em;
+			padding-bottom: 2em;
+			margin-top: 2em;
+			margin-bottom: 2em;
+
+			&:first-child {
+				@media(max-width: $small-max-width) {
+					margin-top: 1em;
+				}
+			}
+
+			&:last-child {
+				border: none;
+			}
+
+			h2 {
+				@include font-family-demi();
+				font-size: 24px;
+			}
+
+			.sitelogo{
+				margin-bottom: 1em;
+			}
+
+			.sitename {
+				color: black;
+
+				a {
+					text-decoration: none;
+				}
+				h2 {
+					font-size: 24px;
+				}
+			}
+
+			@media (min-width: $small-max-width+1) {
+				.sitelogo, .sitename {
+					display: inline-block;
+					width: 200px;
+					text-align: center;
+					vertical-align: middle;
+				}
+				.quotearea{
+					width: calc(100% - 200px);
+					display: inline-block;
+					padding-left: 1em;
+					vertical-align: middle;
+				}
+			}
+			@media (max-width: $small-max-width) {
+				text-align: center;
+
+			}
+		}
+	}
+}

@@ -1,0 +1,247 @@
+@import '../common.scss';
+.GifMakerPage .EditorPanel .TrimmingTools {
+    .trim-details {
+        display: flex;
+
+        .trim-setting {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 15px;
+
+            label {
+                @include font-family-text-semibold;
+                font-size: 14px;
+                line-height: 19px;
+                margin-bottom: 8px;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.GifMakerPage .TrimScrubber {
+    $scrubberHeight: 60px;
+    $scrubberWidth: 24px;
+    $inactive-blue: #8AB4F8;
+    $active-blue: #669DF6;
+
+    .scrubber {
+        @mixin range-slider() {
+            pointer-events: none;
+            position: absolute;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border-color: transparent !important;
+            color: transparent !important;
+            outline: none !important;
+        }
+        @mixin slider-thumb() {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            box-sizing: border-box !important;
+            border-top: 14px solid !important;
+            border-bottom: 14px solid !important;
+            border-left: 11px solid !important;
+            border-right: 11px solid !important;
+            width: $scrubberWidth !important;
+            height: $scrubberHeight !important;
+            background: white;
+            pointer-events: auto;
+            &:hover {
+                cursor: pointer !important;
+            }
+        }
+
+        position: relative;
+        height: $scrubberHeight;
+        margin-top: 24px;
+        margin-bottom: 8px;
+
+        @media (max-width: $small-max-width) {
+            margin-top: 0;
+        }
+
+        .frames-container {
+            display: flex;
+            width: 100%;
+            cursor: pointer;
+
+            .frames {
+                position: relative;
+                box-sizing: content-box;
+                flex: 1;
+                height: $scrubberHeight;
+                background-color: lightgray;
+                display: flex;
+
+                canvas {
+                    height: 100%;
+                    width: 10%;
+                }
+            }
+
+            .slider-track-overlay {
+                position: absolute;
+                width: 100%;
+                height: $scrubberHeight;
+                display: flex;
+
+                .track-overlay-left, .track-overlay-right {
+                    background: rgba(0, 0, 0, .5);
+                    z-index: 10;
+                    cursor: default;
+                }
+                .track-center {
+                    position: relative;
+                    z-index: 10;
+                    flex: 1;
+
+                    .time-line-container {
+                        position: absolute;
+                        height: 100%;
+                    }
+                    .time-line {
+                        @keyframes slide-timeline {
+                            0% {left: 0%;}
+                            100% {left: 100%;}
+                        }
+                        position: absolute;
+                        height: 100%;
+                        width: 5px;
+                        background-color: #E8EAED;
+
+                        &.reset {
+                            animation-name: slide-timeline;
+                            animation-timing-function: linear;
+                        }
+
+                        &.hidden {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .trim-slider {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            height: $scrubberHeight;
+            width: 100%;
+            top: 50%;
+            transform: translate(0, -50%);
+            overflow: hidden;
+            z-index: 15;
+            pointer-events: none;
+
+            input[class*='trim-slider-left'] {
+                &::-webkit-slider-thumb {
+                    border-top-left-radius: 8px !important;
+                    border-bottom-left-radius: 8px !important;
+                }
+                &::-moz-range-thumb {
+                    border-top-left-radius: 8px !important;
+                    border-bottom-left-radius: 8px !important;
+                }
+                &::-ms-thumb {
+                    border-top-left-radius: 8px !important;
+                    border-bottom-left-radius: 8px !important;
+                }
+            }
+            input[class*='trim-slider-right'] {
+                &::-webkit-slider-thumb {
+                    border-top-right-radius: 8px !important;
+                    border-bottom-right-radius: 8px !important;
+                }
+                &::-moz-range-thumb {
+                    border-top-right-radius: 8px !important;
+                    border-bottom-right-radius: 8px !important;
+                }
+                &::-ms-thumb {
+                    border-top-right-radius: 8px !important;
+                    border-bottom-right-radius: 8px !important;
+                }
+            }
+
+            input[class*='trim-slider-left'], input[class*='trim-slider-right'] {
+                @include range-slider();
+                z-index: 1 !important;
+                width: 100% !important;
+                pointer-events: none;
+
+                &::-webkit-slider-thumb {
+                    @include slider-thumb;
+                    z-index: 100 !important;
+                    border-color: $inactive-blue !important;
+                }
+                &::-moz-range-thumb {
+                    @include slider-thumb;
+                    z-index: 100 !important;
+                    border-color: $inactive-blue !important;
+                }
+                &::-ms-thumb {
+                    @include slider-thumb;
+                    z-index: 100 !important;
+                    border-color: $inactive-blue !important;
+                }
+            }
+
+            input[class*='trim-slider-left-engaged'], input[class*='trim-slider-right-engaged'] {
+                @include range-slider();
+                z-index: 1 !important;
+                width: 100% !important;
+
+                &::-webkit-slider-thumb {
+                    @include slider-thumb;
+                    border-color: $active-blue !important;
+                }
+                &::-moz-range-thumb {
+                    @include slider-thumb;
+                    border-color: $active-blue !important;
+                }
+                &::-ms-thumb {
+                    @include slider-thumb;
+                    border-color: $active-blue !important;
+                }
+            }
+        }
+    }
+
+    .scrubber-details {
+        display: flex;
+        justify-content: space-between;
+
+        @media(max-width: $small-max-width) {
+            // NOTE removing this so that editor tool section can remain at a fixed height
+            // if not, the gif image will resize when switching tools, causing positioning bugs.
+            display: none;
+        }
+
+        .play-button {
+            font-size: 36px;
+            color: $inactive-blue;
+
+            // NOTE uncomment when/if play/pause allowed
+            // &:hover {
+            //     color: $active-blue;
+            // }
+        }
+
+        .time-stamp {
+            @include font-family-text-bold();
+            font-size: 14px;
+            line-height: 22px;
+            color: #A9A9A9;
+        }
+    }
+}
+

@@ -1,0 +1,103 @@
+@import "scss/_vars.scss";
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html, body {
+	@include font-family-regular();
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+    // NOTE: if applied to a page with overflow content, will scroll to top of page
+    &.no-scroll {
+        overflow: hidden;
+        position: fixed;
+        overscroll-behavior: contain; // Experimental, not fully supported
+    }
+    // NOTE prevents user from scrolling and will remain at current scroll-y position
+    &.no-scroll-maintain-y-offset {
+        overflow: hidden;
+    }
+}
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.visible {
+	visibility: visible !important;
+}
+
+q, blockquote {
+  quotes: "“" "”" "‘" "’";
+	&:before {
+		content: open-quote;
+	}
+	&:after {
+		content: close-quote;
+	}
+}
+
+blockquote p {
+	display: inline;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.1em;
+	margin-bottom: 20px;
+	margin-left: 0;
+	margin-right: 0;
+	color: $off-black;
+	clear: both;
+}
+
+h4 {
+    @include font-family-bold();
+	font-size: 16px;
+}
+
+h3 {
+    @include font-family-bold();
+	font-size: 16px;
+}
+
+h2 {
+    @include font-family-demi();
+    font-size: 25px;
+}
+h1 {
+    @include font-family-demi();
+	font-size: 35px;
+}
+
+a{
+	cursor: pointer;
+}
+
+input, textarea, select {
+	border: 1px solid $light-grey;
+}
+
+#view {
+    // margin-top: 50px;
+}
+
+.page {
+	padding-top: 30px;
+	margin-bottom: 30px;
+}
+
+.Copybox input {
+	padding: 8px 10px;
+}
+
+ul.list-unstyled {
+	margin-bottom: 0;
+	li {
+		display: inline-block;
+	}
+}

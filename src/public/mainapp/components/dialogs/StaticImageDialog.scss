@@ -1,0 +1,54 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+
+
+.ngdialog.ngdialog-theme-default .ngdialog-content.ngdialog-container-static-image-dialog {
+    padding: 0;
+    width: 560px;
+    border-radius: 24px;
+    max-width: calc(100vw - 32px);
+    @media(max-width: 991px) {
+        width: 499px;
+    }
+
+    #static-image-dialog {
+        .AutoScrollCarousel {
+            width: 100%;
+            height: 315px;
+            padding: 16px 0 0 0;
+            @media(max-width: 991px) {
+                height: 263px;
+            }
+            @media(max-width: 543px) {
+                height: 177px;
+            }
+        }
+        h2 {
+            @include headline5();
+            text-align: left;
+            padding: 0 24px;
+            margin: 24px 0;
+        }
+        p {
+            @include body1();
+            text-align: left;
+            padding: 0 24px;
+            margin-bottom: 8px;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: flex-end;
+            padding: 16px 24px;
+
+            button {
+                @extend .button-v3;
+
+                @media(max-width: 1199px) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

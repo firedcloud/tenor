@@ -1,0 +1,15 @@
+@import "scss/_vars.scss";
+
+.SearchPage {
+  position: relative;
+  .section-header-row {
+    display: flex;
+    justify-content: space-between;
+  }
+	.switch-view-link {
+        @include font-family-regular();
+        font-size: 18px;
+        line-height: 24px;
+        color: $blue;
+	}
+}

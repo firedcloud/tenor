@@ -1,0 +1,27 @@
+@import "scss/_vars.scss";
+
+.ContactPage {
+	padding: 0 1em;
+	margin: 0 auto;
+	max-width: 600px;
+	width: 100%;
+
+	#id_message, #id_email {
+		width: 100%;
+		padding: 5px;
+		background-color: $off-white;
+	}
+	select {
+		width: 100%;
+	}
+
+	.contact-instructions {
+		font-size: 18px;
+		@include font-family-bold();
+
+		.iconfont-email {
+			color: #9B9B9B;
+			margin-right: 0.5em;
+		}
+	}
+}

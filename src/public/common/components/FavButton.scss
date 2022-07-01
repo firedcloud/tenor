@@ -1,0 +1,55 @@
+@import "scss/_vars.scss";
+
+@keyframes heart-burst {
+    5.71% {background-image: url('/assets/icons/fav-heart/heart-animation-1.svg')}
+    11.43% {background-image: url('/assets/icons/fav-heart/heart-animation-2.svg')}
+    20.00% {background-image: url('/assets/icons/fav-heart/heart-animation-3.svg')}
+    31.43% {background-image: url('/assets/icons/fav-heart/heart-animation-4.svg')}
+    42.86% {background-image: url('/assets/icons/fav-heart/heart-animation-5.svg')}
+    54.29% {background-image: url('/assets/icons/fav-heart/heart-animation-6.svg')}
+    65.71% {background-image: url('/assets/icons/fav-heart/heart-animation-7.svg')}
+    77.14% {background-image: url('/assets/icons/fav-heart/heart-animation-8.svg')}
+    88.57% {background-image: url('/assets/icons/fav-heart/heart-animation-9.svg')}
+    100% {background-image: url('/assets/icons/fav-heart/heart-animation-10.svg')}
+}
+
+.FavButton {
+    color: #d0d0d0;
+    background-color: #171717;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px !important;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px 0 rgba(83, 83, 92, 0.11), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    display: inline-block;
+    background-size: contain;
+    background-image: url('/assets/icons/fav-heart/heart-off-icon.svg');
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+
+    &.selected {
+        background-color: #FF8686;
+        background-image: url('/assets/icons/fav-heart/heart-on-icon.svg');
+        color: #ff8096;
+    }
+    &.animated {
+        animation-name: heart-burst;
+        animation-duration: .35s;
+    }
+    &:after{
+        // Hack to get these SVGs preloaded.
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        z-index: -1;
+        $content : '';
+        @for $i from 1 through 10{
+            $content : $content + url('/assets/icons/fav-heart/heart-animation-' + $i + '.svg');
+        }
+        content: #{$content} url('/assets/icons/fav-heart/heart-on-icon.svg');
+    }
+}

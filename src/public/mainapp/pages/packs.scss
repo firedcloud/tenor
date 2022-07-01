@@ -1,0 +1,33 @@
+@import "scss/_vars.scss";
+
+.PackPage{
+	.ios-banner{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 101;
+		width: 100%;
+		background-color: $blue;
+		color: white;
+		@include font-family-demi();
+		font-size: 14px;
+		text-align: center;
+		p{
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+		a{
+			display: block;
+			font-size: 20px;
+			background-color: white;
+			color: $blue;
+			border-radius: 22.5px;
+			margin-top: 0;
+			margin-left: 30px;
+			margin-right: 30px;
+			margin-bottom: 15px;
+			height: 45px;
+			line-height: 45px;
+		}
+	}
+}

@@ -1,0 +1,37 @@
+.ngdialog {
+    box-sizing: border-box;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 10000
+}
+
+.ngdialog *,
+.ngdialog :after,
+.ngdialog :before {
+    box-sizing: inherit
+}
+
+.ngdialog.ngdialog-disabled-animation,
+.ngdialog.ngdialog-disabled-animation .ngdialog-content,
+.ngdialog.ngdialog-disabled-animation .ngdialog-overlay {
+    -webkit-animation: none !important;
+    animation: none !important;
+}
+
+.ngdialog-no-overlay {
+    pointer-events: none;
+}
+
+.ngdialog-close:before {
+    font-family: Helvetica, Arial, sans-serif;
+    content: '\00D7';
+    cursor: pointer;
+}
+
+body.ngdialog-open,
+html.ngdialog-open {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}

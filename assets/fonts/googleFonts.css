@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-display: auto;
+    src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-normal-500.woff) format('woff');
+    unicode-range: U+0-10FFFF;
+}

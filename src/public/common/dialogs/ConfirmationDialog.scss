@@ -1,0 +1,29 @@
+@import "scss/_vars.scss";
+@import "scss/common.scss";
+
+#confirmation-dialog {
+    h2, p {
+        text-align: left;
+    }
+    .ngdialog-close:before {
+        display: none;
+    }
+    .button-row {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            @extend .button;
+            margin: 16px 0 0 8px;
+            font-size: 16px;
+            height: 40px;
+            padding: 0 24px;
+        }
+        .deny-button {
+            background-color: $light-grey;
+            border-color: $light-grey;
+            color: darkgray;
+        }
+        .confirm-button { }
+    }
+}
