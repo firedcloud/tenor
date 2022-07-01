@@ -1,2 +1,2 @@
-# Teno Web App
+# Tenor Web App
 Tenor Source Code 
