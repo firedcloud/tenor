@@ -403,21 +403,21 @@ export class UploadView extends CustomComponent {
             multiple = {
                 true
             } >
-            < /UploadDropZone> <
-            section className = "hero"
+            < UploadDropZone/> 
+            <section className = "hero"
             role = "main"
             aria - label = {
                 gettextSub('Upload and Create')
-            } >
-            <
-            div className = "container" >
-            <
-            div className = "content" >
-            <
-            div className = "value-prop" > { /* FIXME: use gettextSubComponent for this text block? */ } <
-            h1 >
-            <
-            span className = 'blue' > Upload < /span> <
+            }>
+            
+            <div className = "container" >
+            
+            <div className = "content" >
+            
+            </div>div className = "value-prop" > { /* FIXME: use gettextSubComponent for this text block? */ } <
+            <h1 >
+            
+            <span className = 'blue' > Upload < /span> <
             span > GIFs and stickers, or < /span> <
             span className = 'blue' > create < /span> <
             span > them from MP4s < /span> <

@@ -1,14 +1,7 @@
-import {
-    Component
-} from 'inferno'; // eslint-disable-line no-unused-vars
-import {
-    Prompt
-} from 'inferno-router';
+import { Component } from "inferno"; // eslint-disable-line no-unused-vars
+import { Prompt } from "inferno-router";
 
-import {
-    discouragePageNavigation
-} from '../util';
-
+import { discouragePageNavigation } from "../util";
 
 /**
  * The Prompt element handles navigation events wihtin Inferno/React. discouragePageNavigation
@@ -19,20 +12,14 @@ import {
  * will be allowed.
  */
 export class NavigationPrompt extends Component {
-    componentDidMount() {
-        this.unlisten = discouragePageNavigation();
-    }
+  componentDidMount() {
+    this.unlisten = discouragePageNavigation();
+  }
 
-    componentWillUnmount() {
-        this.unlisten && this.unlisten();
-    }
-    render() {
-        return <Prompt when = {
-            this.props.when
-        }
-        message = {
-            this.props.message
-        }
-        />;
-    }
+  componentWillUnmount() {
+    this.unlisten && this.unlisten();
+  }
+  render() {
+    return <Prompt when={this.props.when} message={this.props.message} />;
+  }
 }
