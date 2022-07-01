@@ -1,6 +1,4 @@
 import "../common/polyfill";
-
-import { Component } from "inferno"; // eslint-disable-line no-unused-vars
 import { Route, Switch } from "inferno-router";
 
 import { AuthDialog } from "../common/dialogs/AuthDialog";
